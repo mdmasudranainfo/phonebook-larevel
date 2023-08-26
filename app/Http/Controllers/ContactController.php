@@ -4,12 +4,38 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Member;
+use App\Models\Register;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 
 class ContactController extends Controller
 {
+
+//    register
+public function register(){
+    return view('register');
+}
+
+public function saveRegister(Request $request){
+    $fullName=$request->fullName;
+    $contact=$request->contact;
+    $nidNumber=$request->nidNumber;
+    $password=$request->password;
+
+    $object = new Register();
+    $object->fullName=$fullName;
+    $object->contact=$contact;
+    $object->nidNumber=$nidNumber;
+    $object->password=$password;
+    $object->save();
+    return "register successfully";
+
+
+}
+
+
+
 
     public function student(){
         return view('student');
@@ -23,11 +49,11 @@ class ContactController extends Controller
 
         $object= new Student();
         $object->name=$name;
-        $object->father->$father;
-        $object->mother->$mother;
-        $object->roll->$roll;
+        $object->father=$father;
+        $object->mother=$mother;
+        $object->roll=$roll;
         $object->save();
-        return 'student add successfully';
+        return 'student added successfully';
     }
 
 

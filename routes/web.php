@@ -26,6 +26,9 @@ Route::prefix('contact')->group(function(){
     Route::post('save-member',[ContactController::class,'saveMember'])->name('save.member');
     Route::get('student',[ContactController::class,'student'])->name('add.student');
     Route::post('save-student',[ContactController::class,'saveStudent'])->name('save.student');
+//    register
+    Route::get('register',[ContactController::class,'register'])->name('register');
+    Route::post('save-register',[ContactController::class,'saveRegister'])->name('save.register');
 });
 
 Route::get('/',function(){
